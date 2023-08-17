@@ -2,15 +2,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Two Pages with Figures</title>
+    <title>Combined Figures</title>
 </head>
 <body>
 
-<h1>Page 1</h1>
-<iframe src="/content/figure1.html" width="800" height="600"></iframe>
+<h1>Combined Figures</h1>
 
-<h1>Page 2</h1>
-<iframe src="/content/figure2.html" width="800" height="600"></iframe>
+<div id="page1" style="display:block;">
+    <iframe src="figure1.html" width="800" height="600"></iframe>
+    <button onclick="showPage(2)">Go to Page 2</button>
+</div>
+
+<div id="page2" style="display:none;">
+    <iframe src="figure2.html" width="800" height="600"></iframe>
+    <button onclick="showPage(1)">Go to Page 1</button>
+</div>
+
+<script>
+    function showPage(pageNumber) {
+        if (pageNumber === 1) {
+            document.getElementById("page1").style.display = "block";
+            document.getElementById("page2").style.display = "none";
+        } else if (pageNumber === 2) {
+            document.getElementById("page1").style.display = "none";
+            document.getElementById("page2").style.display = "block";
+        }
+    }
+</script>
 
 </body>
 </html>
