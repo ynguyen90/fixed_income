@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SBV LIQUIDITY — VN EQUITY INTEL BRIEF</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -42,20 +44,23 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 .status-dot{width:10px;height:10px;border-radius:50%;background:var(--amber);box-shadow:0 0 12px var(--amber);animation:pulse 1.5s infinite;flex-shrink:0}
 .status-text{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:1px;color:var(--amber);text-transform:uppercase}
 
+/* Chart Container */
+.chart-container{
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:24px;
+    margin-bottom:32px;
+    position:relative;
+    height:350px;
+}
+
 /* Sections */
 .section{margin-bottom:32px}
 .section-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .section-number{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;color:var(--gold);opacity:0.4;line-height:1}
 .section-title{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
 .section-body{font-size:14px;color:var(--text);line-height:1.75;padding-left:38px}
-.section-body p{margin-bottom:10px}
-
-/* Metrics Grid */
-.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;padding-left:38px;margin-bottom:28px}
-.metric-card{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:14px}
-.metric-title{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--text-dim);text-transform:uppercase;margin-bottom:6px}
-.metric-value{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:2px}
-.metric-sub{font-size:11px;color:var(--text-dim)}
 
 /* Table Wrap */
 .table-wrap{overflow-x:auto;padding-left:38px;margin-bottom:28px}
@@ -72,11 +77,12 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 /* Animations */
 .fadeUp{opacity:0;transform:translateY(16px);animation:fadeUp 0.6s ease forwards}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-.delay1{animation-delay:0.1s}.delay2{animation-delay:0.2s}.delay3{animation-delay:0.3s}.delay4{animation-delay:0.4s}.delay5{animation-delay:0.5s}
+.delay1{animation-delay:0.1s}.delay2{animation-delay:0.2s}.delay3{animation-delay:0.3s}.delay4{animation-delay:0.4s}.delay5{animation-delay:0.5s}.delay6{animation-delay:0.6s}
 
 @media(max-width:600px){
 .stat-strip{grid-template-columns:repeat(2,1fr)}
-.section-body,.table-wrap,.metrics-grid{padding-left:0}
+.section-body,.table-wrap,.chart-container{padding-left:10px}
+.chart-container{height:300px}
 }
 </style>
 </head>
@@ -120,27 +126,32 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 <div class="stat-value green">98.7</div>
 <div class="stat-delta">-1.38% WoW</div>
 </div>
-<div class="stat-item">
-<div class="stat-label">Interbank USDVND</div>
-<div class="stat-value green">-0.03%</div>
-<div class="stat-delta">-8ppts domestically</div>
-</div>
 </div>
 
 <div class="section fadeUp delay3">
+    <div class="section-header">
+        <div class="section-number">📊</div>
+        <div class="section-title">Yield Curve Matrix</div>
+    </div>
+    <div class="chart-container">
+        <canvas id="yieldChart"></canvas>
+    </div>
+</div>
+
+<div class="section fadeUp delay4">
 <div class="section-header">
 <div class="section-number">01</div>
 <div class="section-title">SBV Liquidity Withdrawal</div>
 </div>
 <div class="section-body">
-<p>In 15W26 (from 06 to 10 April), the SBV shifts to a net liquidity withdrawal from the banking system, following a week of strong injections. Specifically, the SBV issues VND 70.4tn in new repos while VND 136.6tn worth of repos matures, resulting in a substantial net liquidity withdrawal of VND 66.3tn from the system.</p>
+<p>In 15W26 (from 06 to 10 April), the SBV shifts to a net liquidity withdrawal from the banking system, following a week of strong injections. Specifically, the SBV issues VND 70.4tn in new repos while VND 136.6tn worth of repos matures, resulting in a net liquidity withdrawal of <b>VND 66.3tn</b>.</p>
 </div>
 </div>
 
-<div class="section fadeUp delay4">
+<div class="section fadeUp delay5">
 <div class="section-header">
 <div class="section-number">02</div>
-<div class="section-title">Interbank Rates Divergence</div>
+<div class="section-title">Interbank Rates Matrix</div>
 </div>
 <div class="table-wrap">
 <table class="target-table">
@@ -156,45 +167,93 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
 </tbody>
 </table>
 </div>
-<div class="section-body">
-<p>This week, interbank rates recorded a diverging trend as short end rates rise, while longer term rates decrease slightly. This upward movement reflects rising demand at the very short end as a substantial value of repo contracts matures during the week. Trading activity cools down as average value decreases by 8.78% WoW to VND 826.33tn.</p>
-</div>
-</div>
-
-<div class="section fadeUp delay5">
-<div class="section-header">
-<div class="section-number">03</div>
-<div class="section-title">USDVND Performance</div>
-</div>
-<div class="metrics-grid">
-<div class="metric-card">
-<div class="metric-title">DXY Friday Close</div>
-<div class="metric-value green">98.7</div>
-<div class="metric-sub">-1.38% WoW</div>
-</div>
-<div class="metric-card">
-<div class="metric-title">Interbank USDVND</div>
-<div class="metric-value green">Cooling</div>
-<div class="metric-sub">-0.03% (8ppts)</div>
-</div>
-<div class="metric-card">
-<div class="metric-title">Energy Prices</div>
-<div class="metric-value green">Declining</div>
-<div class="metric-sub">Amid negotiation phase</div>
-</div>
-</div>
-<div class="section-body">
-<p>USDVND edged lower after six consecutive weeks of gains as the greenback weakened significantly, with the DXY closing at 98.7 on Friday. Globally, the U.S. dollar softened alongside a notable decline in energy prices, as tensions between the United States and Iran entered a negotiation phase. Domestically, interbank USDVND tracked the broader weakness in the U.S. dollar, despite continued foreign net selling in the equity market.</p>
-</div>
 </div>
 
 <div class="summary-row fadeUp delay6">
 <div class="summary-title">Bottom Line</div>
 <div class="summary-text">
-The SBV has pivoted to a aggressive net withdrawal stance (VND 66.3tn) to re-balance system liquidity. While short-end interbank rates have surged by up to 170bps due to repo maturities, the external pressure from the USD is cooling down as global tensions ease and energy prices retreat.
+The SBV has pivoted to an aggressive net withdrawal stance (VND 66.3tn) to re-balance system liquidity. While short-end interbank rates have surged by up to 170bps due to repo maturities, the external pressure from the USD is cooling down as global tensions ease and energy prices retreat.
 </div>
 </div>
 
 </div>
+
+<script>
+const ctx = document.getElementById('yieldChart').getContext('2d');
+
+// Dữ liệu từ báo cáo của bạn
+const labels = ['Overnight', '1-Week', '1-Month', '3-Month', '6-Month'];
+const dataValues = [6.85, 7.35, 7.55, 7.70, 7.90];
+const changes = [145, 170, 95, -10, -10];
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Interbank Rate (%)',
+            data: dataValues,
+            backgroundColor: [
+                'rgba(231, 76, 60, 0.4)', // Overnight - Red/Amber (Rising)
+                'rgba(231, 76, 60, 0.4)', // 1W - Red
+                'rgba(231, 76, 60, 0.4)', // 1M - Red
+                'rgba(46, 204, 113, 0.4)', // 3M - Green (Falling)
+                'rgba(46, 204, 113, 0.4)'  // 6M - Green
+            ],
+            borderColor: [
+                '#e74c3c', '#e74c3c', '#e74c3c', '#2ecc71', '#2ecc71'
+            ],
+            borderWidth: 1.5,
+            borderRadius: 4,
+            hoverBackgroundColor: '#c8a96e'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                backgroundColor: '#0a0b0e',
+                titleFont: { family: 'IBM Plex Mono', size: 12 },
+                bodyFont: { family: 'DM Sans', size: 14 },
+                borderColor: 'rgba(200,169,110,0.3)',
+                borderWidth: 1,
+                callbacks: {
+                    label: function(context) {
+                        let val = context.parsed.y;
+                        let change = changes[context.dataIndex];
+                        return ` Rate: ${val}% (${change > 0 ? '+' : ''}${change} bps)`;
+                    }
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: false,
+                min: 6,
+                grid: { color: 'rgba(232, 230, 225, 0.05)' },
+                ticks: { 
+                    color: '#8a8780',
+                    font: { family: 'IBM Plex Mono' },
+                    callback: value => value + '%'
+                }
+            },
+            x: {
+                grid: { display: false },
+                ticks: { 
+                    color: '#c8a96e',
+                    font: { family: 'IBM Plex Mono', size: 10 }
+                }
+            }
+        },
+        animation: {
+            duration: 2000,
+            easing: 'easeOutQuart'
+        }
+    }
+});
+</script>
+
 </body>
 </html>
