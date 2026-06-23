@@ -1,471 +1,466 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weekly Fixed Income Updates</title>
-    
-    <!-- Luxury Dark Theme Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&amp;family=IBM+Plex+Mono:wght@300;400;500&amp;family=DM+Sans:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg: #0a0b0e;
-            --gold: #c8a96e;
-            --gold-dim: rgba(200,169,110,0.15);
-            --red: #e74c3c;
-            --green: #2ecc71;
-            --amber: #f39c12;
-            --text: #e8e6e1;
-            --text-dim: #8a8780;
-            --border: rgba(200,169,110,0.22);
-            --card-bg: rgba(255,255,255,0.03);
-        }
-        
-        * { margin:0; padding:0; box-sizing:border-box; }
-        
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'DM Sans', sans-serif;
-            line-height: 1.65;
-            padding: 40px 20px;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 920px;
-            margin: 0 auto;
-            border: 1px solid var(--border);
-            padding: 48px 40px;
-            background: rgba(255,255,255,0.02);
-            box-shadow: 0 0 40px rgba(200,169,110,0.08);
-            animation: fadeUp 0.8s ease-out;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Middle-Income Trap: Thailand and Vietnam</title>
+  <style>
+    :root {
+      --bg: #070b14;
+      --panel: #0f172a;
+      --panel-2: #111c33;
+      --text: #e5e7eb;
+      --muted: #a7b0c0;
+      --border: #263449;
+      --header: #172554;
+      --header-text: #dbeafe;
+      --accent: #60a5fa;
+      --accent-2: #a78bfa;
+      --row-alt: #0b1324;
+      --row-hover: #162033;
+      --warning: #fbbf24;
+    }
 
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        /* HEADER */
-        .header { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 32px; }
-        .classification { color: var(--red); font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
-        .title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 5vw, 46px); font-weight: 900; color: var(--gold); line-height: 1.05; margin-bottom: 8px; }
-        .subtitle { font-size: 15px; color: var(--text-dim); }
-        .datestamp { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--text-dim); text-align: right; margin-top: 8px; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(96, 165, 250, 0.18), transparent 34%),
+        radial-gradient(circle at top right, rgba(167, 139, 250, 0.14), transparent 28%),
+        var(--bg);
+    }
 
-        /* MONEY MARKET STATS */
-        .stat-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin-bottom: 40px; }
-        .stat-box { background: var(--gold-dim); border: 1px solid var(--border); padding: 18px 16px; border-radius: 6px; text-align: center; }
-        .stat-label { font-size: 10px; text-transform: uppercase; color: var(--gold); letter-spacing: 1.5px; font-family: 'IBM Plex Mono', monospace; }
-        .stat-val { font-size: 24px; font-weight: 700; margin-top: 6px; font-family: 'Playfair Display', serif; }
-        .stat-delta { font-size: 11px; margin-top: 4px; color: var(--text-dim); }
-        .up { color: var(--green); } .down { color: var(--red); }
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 36px 28px 56px;
+    }
 
-        /* TABLE */
-        .table-wrap { margin: 0 auto; max-width: 100%; overflow-x: auto; padding: 0; }
-        .target-table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            background: var(--card-bg); 
-            border: 1px solid var(--border); 
-        }
-        .target-table th { 
-            text-align: left; 
-            color: var(--gold); 
-            padding: 14px 16px; 
-            border-bottom: 2px solid var(--border); 
-            text-transform: uppercase; 
-            font-size: 11px; 
-            font-family: 'IBM Plex Mono', monospace; 
-            letter-spacing: 1px; 
-        }
-        .target-table td { 
-            padding: 14px 16px; 
-            border-bottom: 1px solid var(--border); 
-            vertical-align: middle; 
-        }
-        .target-table tr:last-child td { border-bottom: none; }
-        .target-table .ticker-cell { 
-            font-family: 'IBM Plex Mono', monospace; 
-            font-weight: 600; 
-            color: var(--gold); 
-        }
+    .hero {
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.92));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 30px;
+      margin-bottom: 28px;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
+    }
 
-        /* SECTION HEADER */
-        .section-header {
-            font-family: 'Playfair Display', serif;
-            color: var(--gold);
-            font-size: 19px;
-            margin: 42px 0 18px;
-            border-left: 4px solid var(--gold);
-            padding-left: 18px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
+    h1 {
+      font-size: 30px;
+      line-height: 1.25;
+      margin: 0 0 10px;
+      color: #f8fafc;
+      letter-spacing: -0.02em;
+    }
 
-        /* CHARTS */
-        .charts-row { display: flex; gap: 28px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
-        .chart-box { flex: 1; min-width: 340px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
-        .chart-title {
-            text-align: center;
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
-            color: var(--gold);
-            letter-spacing: 2px;
-            margin-bottom: 14px;
-            text-transform: uppercase;
-        }
-        .chart-wrap canvas { width: 100% !important; height: 260px !important; }
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      max-width: 1050px;
+      font-size: 15px;
+    }
 
-        /* SECTION BODY */
-        .section-body { font-size: 14.5px; line-height: 1.75; color: var(--text); padding-left: 0; }
-        .section-body p { margin-bottom: 14px; }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
 
-        /* SUMMARY */
-        .summary-box {
-            background: rgba(255,255,255,0.03);
-            padding: 28px;
-            border-radius: 8px;
-            border-left: 5px solid var(--amber);
-            margin-top: 40px;
-        }
-        .summary-title {
-            font-family: 'IBM Plex Mono', monospace;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 11px;
-            margin-bottom: 12px;
-        }
+    .nav a {
+      color: var(--header-text);
+      border: 1px solid var(--border);
+      background: rgba(96, 165, 250, 0.10);
+      padding: 8px 12px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 13px;
+    }
 
-        /* NÚT LOAD - VÀNG TRÒN NHỎ (đặt ngay cạnh header) */
-        .load-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px; 
-            height: 40px;
-            background: var(--gold);
-            color: #0a0b0e;
-            border-radius: 50%;
-            font-size: 18px;
-            box-shadow: 0 4px 12px rgba(200,169,110,0.4);
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .load-btn:hover { transform: scale(1.1); }
+    .section {
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      margin-top: 24px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.26);
+    }
 
-        .curve-controls {
-            text-align: center;
-            margin: 12px 0 16px;
-        }
-        .curve-btn {
-            background: rgba(200,169,110,0.2);
-            color: var(--gold);
-            border: 1px solid var(--gold);
-            padding: 6px 16px;
-            margin: 0 6px;
-            border-radius: 20px;
-            font-size: 13px;
-            cursor: pointer;
-        }
-        .curve-btn.active {
-            background: var(--gold);
-            color: #0a0b0e;
-        }
+    h2 {
+      font-size: 21px;
+      margin: 0 0 14px;
+      color: #bfdbfe;
+      letter-spacing: -0.01em;
+    }
 
-        @media (max-width: 640px) {
-            .container { padding: 30px 20px; }
-            .stat-strip { grid-template-columns: repeat(2, 1fr); }
-            .charts-row { flex-direction: column; }
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    .section-note {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+      font-size: 13.5px;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      padding: 12px 14px;
+      vertical-align: top;
+    }
+
+    th:last-child, td:last-child {
+      border-right: none;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: var(--header);
+      color: var(--header-text);
+      text-align: left;
+      font-weight: 700;
+    }
+
+    tbody tr:nth-child(even) td {
+      background: var(--row-alt);
+    }
+
+    tbody tr:hover td {
+      background: var(--row-hover);
+    }
+
+    td:first-child {
+      color: #f1f5f9;
+      font-weight: 650;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #93c5fd;
+      text-decoration: underline;
+    }
+
+    .source {
+      white-space: normal;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 2px 4px 2px 0;
+      padding: 2px 7px;
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      border-radius: 999px;
+      color: #bfdbfe;
+      background: rgba(96, 165, 250, 0.08);
+      font-size: 12px;
+    }
+
+    .verdict {
+      color: var(--warning);
+      font-weight: 700;
+    }
+
+    .footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 12.5px;
+      text-align: center;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        color: #111827;
+      }
+
+      .hero, .section {
+        background: #ffffff;
+        box-shadow: none;
+        border-color: #d1d5db;
+      }
+
+      h1, h2, td:first-child {
+        color: #111827;
+      }
+
+      .subtitle, .section-note, .footer {
+        color: #4b5563;
+      }
+
+      th {
+        background: #e5e7eb;
+        color: #111827;
+      }
+
+      tbody tr:nth-child(even) td,
+      tbody tr:hover td {
+        background: #f9fafb;
+      }
+
+      a {
+        color: #1d4ed8;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="container">
+  <main class="container">
+    <section class="hero">
+      <h1>Middle-Income Trap: Thailand and Vietnam</h1>
+      <p class="subtitle">
+        Research tables for explaining why Thailand has struggled to become a high-income country, what Vietnam is doing to become a developed economy, and whether Vietnam’s target is achievable.
+      </p>
+      <div class="nav">
+        <a href="#table-1">Table 1 · Thailand</a>
+        <a href="#table-2">Table 2 · Vietnam’s strategy</a>
+        <a href="#table-3">Table 3 · Is it possible?</a>
+      </div>
+    </section>
 
-    <div class="section fadeUp delay4">
-        <div class="section-header">
-            <div class="section-title">16W26 - Daily OMO Updates</div>
-        </div>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">13 Apr</div>
-                <div class="timeline-content">New repos offerings: VND33.70tn; Maturity of previous repos: VND41.35tn; Net withdrawal: VND7.65tn.</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">14 Apr</div>
-                <div class="timeline-content">New repos offerings: VND11.00tn; Maturity of previous repos: VND32.00tn; Net withdrawal: VND21.00tn.</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">15 Apr</div>
-                <div class="timeline-content" style="color: #e74c3c;"> OMO update 15th April, 2026 - New repos offerings: VND5.00tn; Maturity of previous repos: VND32.00tn; Net withdrawal: VND27.00tn.</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SECTION 02: WEEKLY MONEY MARKET ACTIVITIES -->
-    <div class="section-header">01 WEEKLY MONEY MARKET ACTIVITIES</div>
-    <div class="section-body">
-        <div class="sub-title">SBV shifts to net liquidity withdrawal</div>
-        <p>In 16W26 (from 13 to 15 April), the SBV continues to withdraw liquidity from the banking system, totalling VND55.65tn up to Wednesday.</p>
-    </div>    
-
-    <div class="stat-strip">
-        <div class="stat-box">
-            <div class="stat-label">REPOS ISSUANCE</div>
-            <div class="stat-val" style="color:var(--green)">VND49.70tn</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">REPOS MATURED</div>
-            <div class="stat-val" style="color:var(--red)">VND105.35tn</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">INJECTION/(WITHDRAWAL)</div>
-            <div class="stat-val" style="color:var(--red)">(VND55.65tn)</div>
-        </div>
-        <div class="stat-box">
-            <div class="stat-label">REPOS OUTSTANDING</div>
-            <div class="stat-val" style="color:var(--red)">VND208.92tn▼</div>
-        </div>
-    </div>
-
-    <div class="charts-row">
-        <div class="chart-box">
-            <div class="chart-title">Figure 1. Weekly injection (withdrawal)</div>
-            <div class="chart-wrap"><canvas id="liquidityChart"></canvas></div>
-        </div>
-        <div class="chart-box">
-            <div class="chart-title">Figure 2. Weekly repos outstanding</div>
-            <div class="chart-wrap"><canvas id="volumeChart"></canvas></div>
-        </div>
-    </div>
-
-    <!-- SECTION 03: INTERBANK ACTIVITIES -->
-    <!-- NÚT LOAD NGAY CẠNH HEADER -->
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-        <div class="section-header" style="margin: 0; flex: 1;">02 INTERBANK ACTIVITIES</div>
-        <button onclick="document.getElementById('excelInput').click()" class="load-btn">📊</button>
-    </div>
-
-    <div class="section-body">
-        <div class="sub-title">Interbank rates cools down</div>
-        <p id="interbank-desc">Interbank rates recorded notable declines as the week progressed, reflecting a cooling of liquidity pressures in the market.</p>
-    </div>    
-
-    <!-- BẢNG INTERBANK (dynamic) -->
-    <div class="table-wrap">
-        <table class="target-table" id="interbankTable">
-            <thead>
-                <tr>
-                    <th>TENOR</th>
-                    <th>CURRENT RATE</th>
-                    <th>WoW (bps)</th>
-                    <th>DoD (bps)</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
+    <section class="section" id="table-1">
+      <h2>Table 1. Why did Thailand fail to become a high-income country?</h2>
+      <p class="section-note">
+        Thailand did not fail at industrialization. The core problem is that its industrialization did not translate into sufficient domestic technological capability, productivity growth, and innovation-led upgrading.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Research Argument</th>
+              <th>Explanation for the Paper</th>
+              <th>Suggested Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Thailand industrialized successfully but growth slowed after reaching upper-middle-income status</td>
+              <td>Thailand should not be viewed as a failed industrializer. It successfully built manufacturing and export capacity, but its long-term growth slowed after reaching upper-middle-income status. This suggests that industrialization alone is not sufficient to guarantee transition to high-income status.</td>
+              <td class="source"><a href="https://www.worldbank.org/ext/en/country/thailand" target="_blank">World Bank Thailand</a></td>
+            </tr>
+            <tr>
+              <td>Dependence on tourism, consumption, and fiscal stimulus</td>
+              <td>Recent growth remains heavily supported by tourism recovery, private consumption, and government stimulus. These sources can support short-term demand, but they are not enough to generate the productivity acceleration needed for high-income transition.</td>
+              <td class="source"><a href="https://www.worldbank.org/en/country/thailand/publication/thailand-economic-monitor-february-2025-unleashing-growth-innovation-smes-and-startups" target="_blank">World Bank Thailand Economic Monitor</a></td>
+            </tr>
+            <tr>
+              <td>Weak domestic technological capability</td>
+              <td>A core reason behind Thailand’s middle-income trap is the limited technological learning of domestic firms. Although Thailand attracted FDI and built an industrial base, domestic firms did not upgrade fast enough in technology, innovation, and higher-value production.</td>
+              <td class="source"><a href="https://www.sje.ac.kr/xml/26566/26566.pdf" target="_blank">Intarakumnerd</a></td>
+            </tr>
+            <tr>
+              <td>Global value chain participation without deep upgrading</td>
+              <td>Thailand became deeply integrated into global value chains, especially in automobiles, electronics, and export manufacturing. However, participation in global production did not automatically lead to technology transfer, domestic value creation, or movement into design, R&amp;D, branding, and advanced engineering.</td>
+              <td class="source"><a href="https://ideas.repec.org/p/pui/dpaper/202.html" target="_blank">Korwatanasakul</a></td>
+            </tr>
+            <tr>
+              <td>Political economy and institutional constraints</td>
+              <td>Institutions often protected incumbents and politically connected firms rather than creating strong incentives for productivity, competition, and domestic capability building. The middle-income trap is therefore not only an economic problem but also a political-economy problem.</td>
+              <td class="source"><a href="https://www.jstor.org/stable/26347364" target="_blank">Doner &amp; Schneider</a></td>
+            </tr>
+            <tr>
+              <td>Weak discipline in industrial policy</td>
+              <td>Government support was not always tied to clear performance requirements, efficiency targets, or sunset clauses. Without strong conditionality, policy support can create rent-seeking and protect inefficient firms instead of forcing them to upgrade.</td>
+              <td class="source"><a href="https://www.adb.org/sites/default/files/publication/231951/adbi-wp685.pdf" target="_blank">ADB Institute</a></td>
+            </tr>
+            <tr>
+              <td>Loose financial supervision and short-term capital inflows before the 1997 crisis</td>
+              <td>Weak financial supervision allowed cheap short-term foreign borrowing to flow into real estate and financial assets. This created an appearance of strong growth, but much of it was speculative and did not support long-term productivity-enhancing investment.</td>
+              <td class="source"><a href="https://www.bot.or.th/en/our-roles/special-measures/Tom-Yum-Kung-lesson.html" target="_blank">Bank of Thailand</a></td>
+            </tr>
+            <tr>
+              <td>Need to move toward investment, infusion, and innovation</td>
+              <td>For upper-middle-income economies, the next stage requires not only investment but also technology infusion and innovation. Thailand’s challenge is to move from FDI-led production toward domestic innovation capacity, stronger SMEs, and productivity-led growth.</td>
+              <td class="source"><a href="https://www.worldbank.org/en/publication/wdr2024" target="_blank">World Development Report 2024</a></td>
+            </tr>
+          </tbody>
         </table>
-    </div>
+      </div>
+    </section>
 
-    <input type="file" id="excelInput" accept=".xlsx" style="display:none;" onchange="loadExcelFile(this)">
+    <section class="section" id="table-2">
+      <h2>Table 2. What is Vietnam doing to become a developed country and escape the middle-income trap?</h2>
+      <p class="section-note">
+        Vietnam’s policy direction is shifting from “cheap labor + FDI + assembly + infrastructure” toward “productivity + technology + skilled labor + stronger domestic firms + better institutions.”
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Policy Area</th>
+              <th>What Vietnam Is Doing</th>
+              <th>Why It Matters for Escaping the Middle-Income Trap</th>
+              <th>Suggested Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Selective, higher-quality FDI</td>
+              <td>Vietnam is shifting from attracting FDI “at any cost” toward selecting projects with higher technology content, stronger domestic linkages, higher value added, R&amp;D, worker training, and local supplier participation. Resolution 10-NQ/TW on foreign-invested economic development emphasizes quality, efficiency, technology transfer, and integration with domestic enterprises.</td>
+              <td>This reduces the risk of an <strong>FDI trap</strong>, where the country attracts large foreign investment but remains concentrated in low-value assembly while core technology, design, branding, and profits stay abroad.</td>
+              <td class="source"><a href="https://xaydungchinhsach.chinhphu.vn/nghi-quyet-so-10-nq-tw-ve-phat-trien-kinh-te-co-von-dau-tu-nuoc-ngoai-11926061312552157.htm" target="_blank">Resolution 10-NQ/TW</a></td>
+            </tr>
+            <tr>
+              <td>Technology, innovation, and digital transformation</td>
+              <td>Vietnam is promoting science, technology, innovation, and national digital transformation as strategic growth drivers. Resolution 57-NQ/TW frames these areas as breakthroughs for modern productive forces, governance modernization, and long-term growth.</td>
+              <td>This is the transition from growth based mainly on capital and labor toward growth based on productivity, knowledge, data, and innovation. Without this shift, industrialization may remain shallow.</td>
+              <td class="source"><a href="https://xaydungchinhsach.chinhphu.vn/toan-van-nghi-quyet-ve-dot-pha-phat-trien-khoa-hoc-cong-nghe-doi-moi-sang-tao-va-chuyen-doi-so-quoc-gia-119241224180048642.htm" target="_blank">Resolution 57-NQ/TW</a></td>
+            </tr>
+            <tr>
+              <td>Strategic industries such as semiconductors</td>
+              <td>Vietnam has issued the semiconductor industry development strategy to 2030, with a vision to 2050. The strategy targets capabilities in research, design, manufacturing, packaging, testing, and a large pool of high-skilled semiconductor workers.</td>
+              <td>Strategic sectors can help Vietnam move into higher-value parts of global supply chains. However, success requires a real domestic ecosystem: engineers, universities, labs, supplier firms, R&amp;D, long-term finance, and intellectual-property capability.</td>
+              <td class="source"><a href="https://vanban.chinhphu.vn/?docid=211240&pageid=27160" target="_blank">Decision 1018/QD-TTg</a></td>
+            </tr>
+            <tr>
+              <td>High-quality human capital</td>
+              <td>Vietnam is prioritizing training in semiconductors, AI, data, automation, engineering, digital skills, and modern management. This goes beyond basic education and aims to prepare workers for higher-value industries and services.</td>
+              <td>As wages rise and the population ages, Vietnam cannot depend only on abundant low-cost labor. Future growth must increasingly come from labor productivity, technical capability, and managerial upgrading.</td>
+              <td class="source"><a href="https://www.oecd.org/en/publications/oecd-economic-surveys-viet-nam-2025_fb37254b-en.html" target="_blank">OECD Economic Survey: Viet Nam 2025</a></td>
+            </tr>
+            <tr>
+              <td>Domestic private-sector development</td>
+              <td>Vietnam is trying to strengthen the domestic private sector through reforms that improve the business environment, reduce administrative barriers, support firm formalization, and encourage private firms to scale up and innovate.</td>
+              <td>If Vietnamese firms do not become stronger, Vietnam may have high exports but low domestic value added. A developed economy needs competitive local firms that can own technology, brands, services, and supplier networks.</td>
+              <td class="source"><a href="https://www.worldbank.org/en/country/vietnam/publication/viet-nam-2045-breaking-through-institutions-for-a-high-income-future" target="_blank">World Bank: Viet Nam 2045</a></td>
+            </tr>
+            <tr>
+              <td>Supporting industries and mechanical engineering</td>
+              <td>Vietnam is emphasizing supporting industries such as components, precision mechanics, industrial materials, logistics, packaging, industrial software, technical services, and equipment-related suppliers.</td>
+              <td>This helps raise the domestic content of exports. It also allows Vietnamese firms to move from simple assembly toward production capability, supplier upgrading, and technology absorption.</td>
+              <td class="source"><a href="https://www.oecd.org/en/publications/oecd-economic-surveys-viet-nam-2025_fb37254b-en/full-report/harnessing-trade-and-investment-flows-to-boost-productivity_98d56c90.html" target="_blank">OECD: Trade, investment, and productivity</a></td>
+            </tr>
+            <tr>
+              <td>Better FDI spillovers and supplier linkages</td>
+              <td>Vietnam is increasingly focusing on connecting FDI firms with domestic suppliers, improving supplier quality, raising production standards, and helping local firms meet multinational corporations’ requirements.</td>
+              <td>FDI does not automatically transfer technology. Spillovers depend on domestic absorptive capacity, skilled labor, supplier relationships, quality standards, and incentives for multinationals to localize more complex activities.</td>
+              <td class="source"><a href="https://www.oecd.org/en/publications/oecd-economic-surveys-viet-nam-2025_fb37254b-en/full-report/harnessing-trade-and-investment-flows-to-boost-productivity_98d56c90.html" target="_blank">OECD</a></td>
+            </tr>
+            <tr>
+              <td>Public investment and infrastructure efficiency</td>
+              <td>Vietnam is trying to accelerate public investment disbursement, decentralize project approval, simplify procedures, and improve implementation of infrastructure projects. The revised Public Investment Law aims to reduce bottlenecks in planning, approval, and project execution.</td>
+              <td>Infrastructure supports productivity by reducing logistics costs, improving regional connectivity, and enabling industrial clusters. However, public investment must raise economy-wide productivity, not only boost short-term construction activity.</td>
+              <td class="source"><a href="https://baochinhphu.vn/thu-tuong-quyet-tam-giai-ngan-100-von-dau-tu-cong-nam-2025-102250520130521861.htm" target="_blank">Government Portal</a></td>
+            </tr>
+            <tr>
+              <td>Institutional reform and governance quality</td>
+              <td>Vietnam is focusing on regulatory predictability, transparency, administrative simplification, capital-market development, public-investment quality, SOE reform, and stronger confidence for private investors.</td>
+              <td>Institutions determine whether capital flows to productive firms or gets locked into low-productivity, speculative, or politically connected sectors. This is a key lesson from Thailand’s experience before and after the 1997 crisis.</td>
+              <td class="source"><a href="https://www.worldbank.org/en/country/vietnam/publication/viet-nam-2045-breaking-through-institutions-for-a-high-income-future" target="_blank">World Bank: Viet Nam 2045</a></td>
+            </tr>
+            <tr>
+              <td>Modern services, digital economy, and green transition</td>
+              <td>Vietnam is broadening the growth model beyond manufacturing by developing logistics, finance, professional services, software, data-related services, clean energy, and adaptation to global green standards.</td>
+              <td>Modern services and green transformation can become new sources of productivity growth. They also help Vietnam avoid being locked into low-margin manufacturing and carbon-intensive production.</td>
+              <td class="source"><a href="https://www.worldbank.org/en/publication/wdr2024" target="_blank">World Development Report 2024</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-    <!-- FIGURE 3: Interbank curve -->
-    <div class="charts-row">
-        <div class="chart-box">
-            <div class="chart-title">Figure 3. Interbank curve</div>
-            <div class="curve-controls">
-                <button class="curve-btn active" id="btnYesterday" onclick="switchCurve('yesterday')">vs Yesterday (-1D)</button>
-                <button class="curve-btn" id="btnLastWeek" onclick="switchCurve('lastweek')">vs Last Week (-1W)</button>
-            </div>
-            <div class="chart-wrap"><canvas id="curveChart"></canvas></div>
-        </div>
-    </div>
+    <section class="section" id="table-3">
+      <h2>Table 3. Is it possible?</h2>
+      <p class="section-note">
+        The answer is yes, but it is not automatic. Vietnam’s high-income ambition is possible only if fast growth is converted into productivity, domestic technological capability, and stronger institutions.
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Condition for Success</th>
+              <th>Vietnam’s Current Position</th>
+              <th>Feasibility Assessment</th>
+              <th>What to Watch</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Maintain high productivity growth</td>
+              <td>Vietnam has achieved fast growth and strong export expansion, but productivity levels remain low compared with advanced economies.</td>
+              <td><span class="verdict">Possible but demanding.</span> Growth must come less from labor and capital accumulation, and more from total factor productivity, skills, technology, and management quality.</td>
+              <td><span class="tag">TFP growth</span><span class="tag">labor productivity</span><span class="tag">real wage growth</span></td>
+            </tr>
+            <tr>
+              <td>Turn FDI into domestic capability</td>
+              <td>FDI has brought capital, jobs, exports, technology exposure, and market access, but domestic linkages remain uneven across sectors.</td>
+              <td><span class="verdict">Possible if spillovers deepen.</span> Vietnam needs supplier development, domestic absorptive capacity, and more local participation in design, engineering, R&amp;D, logistics, and industrial services.</td>
+              <td><span class="tag">local content</span><span class="tag">supplier linkages</span><span class="tag">technology transfer</span></td>
+            </tr>
+            <tr>
+              <td>Build strong domestic private firms</td>
+              <td>The private sector is large in employment and increasingly important, but many firms remain small, informal, undercapitalized, and technologically limited.</td>
+              <td><span class="verdict">Possible with institutional support.</span> Vietnam needs fewer barriers to scaling up, deeper finance, fair competition, and incentives for innovation rather than rent-seeking.</td>
+              <td><span class="tag">firm size</span><span class="tag">credit access</span><span class="tag">private investment</span></td>
+            </tr>
+            <tr>
+              <td>Upgrade human capital</td>
+              <td>Vietnam has a strong basic education foundation, but high-income transition requires more engineers, technicians, managers, researchers, and digital workers.</td>
+              <td><span class="verdict">Possible but urgent.</span> The skills system must move from broad literacy and basic education to technical, tertiary, vocational, and lifelong learning for high-value industries and services.</td>
+              <td><span class="tag">STEM graduates</span><span class="tag">vocational training</span><span class="tag">R&amp;D workers</span></td>
+            </tr>
+            <tr>
+              <td>Improve institutions and governance</td>
+              <td>Vietnam has shown reform capacity, but policy predictability, public investment quality, capital allocation, administrative burden, and legal implementation remain key constraints.</td>
+              <td><span class="verdict">The decisive factor.</span> A high-income transition requires an institutional “big push” that rewards productive investment, protects competition, and enables private firms to invest long term.</td>
+              <td><span class="tag">regulatory quality</span><span class="tag">SOE reform</span><span class="tag">capital allocation</span></td>
+            </tr>
+            <tr>
+              <td>Move from assembly to innovation</td>
+              <td>Vietnam is developing strategic sectors such as semiconductors and digital industries, but domestic innovation capacity is still at an early stage.</td>
+              <td><span class="verdict">Possible over time.</span> Vietnam does not need to invent everything immediately, but it must absorb, adapt, and gradually create technology rather than remain permanently in assembly.</td>
+              <td><span class="tag">R&amp;D spending</span><span class="tag">patents</span><span class="tag">engineering capability</span></td>
+            </tr>
+            <tr>
+              <td>Manage external risks</td>
+              <td>The export-led model is exposed to trade barriers, geopolitical fragmentation, supply-chain shifts, technology restrictions, and global demand cycles.</td>
+              <td><span class="verdict">Possible with diversification.</span> Vietnam needs market diversification, stronger domestic demand, higher-value services, and more resilient supply chains.</td>
+              <td><span class="tag">trade barriers</span><span class="tag">market concentration</span><span class="tag">supply-chain resilience</span></td>
+            </tr>
+            <tr>
+              <td>Final judgement</td>
+              <td>Vietnam is not yet trapped, but it is entering the stage where the risk becomes more serious.</td>
+              <td><span class="verdict">Yes, it is possible.</span> Vietnam can become a developed country if it converts FDI-led industrialization into domestic capability building, productivity growth, innovation, and institutional modernization. The main risk is not slow growth alone, but shallow growth: high exports without high domestic value added.</td>
+              <td><span class="tag">productivity</span><span class="tag">domestic firms</span><span class="tag">institutions</span><span class="tag">innovation</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-    <!-- DESCRIPTION -->
-    <div class="section-body" style="margin-top:32px;">
-        <p>These dynamics suggest that while the banking system faces immediate pressure from maturing repos, the overall liquidity environment remains manageable. Looking ahead, interbank rates are expected to fluctuate within a stable range as the central bank continues to recalibrate liquidity levels.</p>
-    </div>
-
-    <!-- BOTTOM LINE -->
-    <div class="summary-box">
-        <div class="summary-title">BOTTOM LINE</div>
-        <div style="font-size:14.5px;line-height:1.75;">
-            The SBV has pivoted to an aggressive net withdrawal stance (VND 66.3tn) to re-balance system liquidity. While short-end interbank rates have surged by up to 170bps due to repo maturities, the external pressure from the USD is cooling down as global tensions ease and energy prices retreat.
-        </div>
-    </div>
-
-</div>
-
-<script>
-let excelData = { today: [], yesterday: [], lastWeek: [] };
-let curveChartInstance = null;
-
-function loadExcelFile(input) {
-    const file = input.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        try {
-            const workbook = XLSX.read(new Uint8Array(e.target.result), { type: 'array' });
-            const sheet = workbook.Sheets['Interbank'];
-            if (!sheet) throw new Error("Không tìm thấy sheet tên 'Interbank'");
-
-            const json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-
-            excelData.today     = (json[1] || []).slice(2).map(v => parseFloat(v) || 0);
-            excelData.yesterday = (json[2] || []).slice(2).map(v => parseFloat(v) || 0);
-            excelData.lastWeek  = (json[3] || []).slice(2).map(v => parseFloat(v) || 0);
-
-            updateInterbankTable();
-            updateCurveChart('lastweek');   // mặc định so với tuần trước
-
-            alert('✅ Đã load thành công OMO.xlsx!');
-        } catch (err) {
-            alert('❌ Lỗi: ' + err.message + '\n\nVui lòng kiểm tra sheet tên "Interbank" và cấu trúc file.');
-            console.error(err);
-        }
-    };
-    reader.readAsArrayBuffer(file);
-}
-
-// Format thay đổi: +x bps ▲ (đỏ) / -x bps ▼ (xanh)
-function getChangeHTML(change) {
-    const num = parseFloat(change);
-    const sign = num >= 0 ? '+' : '';
-    const color = num >= 0 ? 'var(--red)' : 'var(--green)';
-    const arrow = num >= 0 ? '▲' : '▼';
-    return `<span style="color:${color}">${sign}${num}bps ${arrow}</span>`;
-}
-
-function updateInterbankTable() {
-    const tbody = document.querySelector('#interbankTable tbody');
-    tbody.innerHTML = '';
-
-    const tenors = ['Overnight','1-Week','2-Week','1-Month','2-Month','3-Month'];
-
-    tenors.forEach((tenor, i) => {
-        const todayRate = excelData.today[i] || 0;
-        const yesterdayRate = excelData.yesterday[i] || 0;
-        const lastWeekRate = excelData.lastWeek[i] || 0;
-
-        const wow = (todayRate - lastWeekRate).toFixed(0);
-        const dod = (todayRate - yesterdayRate).toFixed(0);
-
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td class="ticker-cell">${tenor}</td>
-            <td style="color:var(--green)">${todayRate.toFixed(2)}%</td>
-            <td>${getChangeHTML(wow)}</td>
-            <td>${getChangeHTML(dod)}</td>
-        `;
-        tbody.appendChild(row);
-    });
-}
-
-function updateCurveChart(mode) {
-    const todayData = excelData.today;
-    const compareData = mode === 'yesterday' ? excelData.yesterday : excelData.lastWeek;
-    const compareLabel = mode === 'yesterday' ? 'Yesterday (-1D)' : 'Last Week (-1W)';
-
-    document.getElementById('btnYesterday').classList.toggle('active', mode === 'yesterday');
-    document.getElementById('btnLastWeek').classList.toggle('active', mode === 'lastweek');
-
-    if (curveChartInstance) curveChartInstance.destroy();
-
-    curveChartInstance = new Chart(document.getElementById('curveChart'), {
-        type: 'line',
-        data: {
-            labels: ['ON','1W','2W','1M','2M','3M'],
-            datasets: [
-                { label: 'Today', data: todayData, borderColor: '#c8a96e', tension: 0.3, borderWidth: 3 },
-                { label: compareLabel, data: compareData, borderColor: '#8a8780', borderDash: [4,3], tension: 0.3, borderWidth: 2.5 }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: true, position: 'top', labels: { color: '#e8e6e1', boxWidth: 12 } } },
-            scales: { 
-                y: { grid: { color: 'rgba(200,169,110,0.15)' } }, 
-                x: { grid: { display: false } } 
-            }
-        }
-    });
-}
-
-function switchCurve(mode) {
-    updateCurveChart(mode);
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-
-    /* ===== CHART 1: Weekly injection (withdrawal) ===== */
-    new Chart(document.getElementById('liquidityChart'), {
-        type: 'bar',
-        data: {
-            labels: ['11W26','12W26','13W26','14W26','15W26', '16W26'],
-            datasets: [{
-                label: 'Net Injection (VND tn)',
-                data: [-81.5, -84.3, 1.6, 110.2, -66.3, -55.6],
-                backgroundColor: function(ctx) { return ctx.raw >= 0 ? '#2ecc71' : '#e74c3c'; },
-                borderRadius: 4,
-                barThickness: 32
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-                y: { beginAtZero: true, ticks: { callback: v => v + ' tn' }, grid: { color: 'rgba(200,169,110,0.15)' } },
-                x: { grid: { display: false } }
-            }
-        }
-    });
-
-    /* ===== CHART 2: Weekly repos outstanding ===== */
-    new Chart(document.getElementById('volumeChart'), {
-        type: 'bar',
-        data: {
-            labels: ['11W26','12W26','13W26','14W26','15W26', '16W26'],
-            datasets: [{
-                label: 'Repos Outstanding (VND tn)',
-                data: [327.38, 243.05, 244.67, 354.82, 288.57, 208.92],
-                backgroundColor: [
-                    'rgba(200,169,110,0.45)',
-                    'rgba(200,169,110,0.45)',
-                    'rgba(200,169,110,0.45)',
-                    'rgba(200,169,110,0.45)',
-                    'rgba(200,169,110,0.45)',
-                    '#c8a96e'
-                ],
-                borderColor: '#e8e6e1',
-                borderWidth: 1,
-                borderRadius: 5,
-                barThickness: 34
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-                y: { beginAtZero: true, ticks: { callback: v => v + ' tn', color: '#e8e6e1' }, grid: { color: 'rgba(200,169,110,0.15)' } },
-                x: { grid: { display: false }, ticks: { color: '#e8e6e1' } }
-            }
-        }
-    });
-
-});
-</script>
+    <p class="footer">
+      Prepared for research and presentation use. Dark-mode version. Sources are linked inside each table.
+    </p>
+  </main>
 </body>
 </html>
